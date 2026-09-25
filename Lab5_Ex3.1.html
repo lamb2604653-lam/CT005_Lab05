@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang giới thiệu cá nhân | Lab5_Ex3.1</title>
+  <style>
+    :root {
+      --bg: #f3f7fb;
+      --panel: #ffffff;
+      --primary: #1d4ed8;
+      --primary-dark: #173ea8;
+      --accent: #f59e0b;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #dbe3f0;
+      --shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eef6ff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 32px 0 24px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: #e6efff;
+      color: var(--primary);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.5fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+      margin-top: 36px;
+      padding: 36px 28px;
+      background: linear-gradient(135deg, #ffffff 0%, #edf5ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
+      line-height: 1.1;
+      color: #111827;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 620px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .tags span {
+      background: #eef3ff;
+      color: var(--primary-dark);
+      border: 1px solid #d6e3ff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .profile-card {
+      background: linear-gradient(180deg, #1d4ed8 0%, #173ea8 100%);
+      color: white;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 18px 36px rgba(29, 78, 216, 0.28);
+    }
+
+    .profile-card h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .profile-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .profile-card li {
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 10px;
+      font-size: 0.97rem;
+    }
+
+    .profile-card li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    main {
+      padding: 10px 0 48px;
+    }
+
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-top: 28px;
+    }
+
+    .section h2 {
+      margin: 0 0 18px;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--primary-dark);
+    }
+
+    .section p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .embed-box {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #f8fbff;
+    }
+
+    .pdf-box iframe {
+      display: block;
+      width: 100%;
+      min-height: 640px;
+      border: 0;
+      background: white;
+    }
+
+    .image-box {
+      text-align: center;
+      padding: 18px;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+    }
+
+    .image-box img {
+      display: block;
+      width: min(100%, 920px);
+      margin: 0 auto;
+      height: auto;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    .video-box {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #0f172a;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+    }
+
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    footer {
+      padding: 24px 0 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="topbar">
+        <div class="brand">MyProfile</div>
+        <nav class="nav" aria-label="Điều hướng chính">
+          <a href="#gioi-thieu">Giới thiệu</a>
+          <a href="#pdf">PDF</a>
+          <a href="#infographic">Infographic</a>
+          <a href="#video">Video</a>
+        </nav>
+      </div>
+
+      <div class="hero-content" id="gioi-thieu">
+        <div>
+          <p class="eyebrow">Thông tin cá nhân</p>
+          <h1>Xin chào, tôi là Nguyễn Văn A</h1>
+          <p class="lead">
+            Tôi là một sinh viên đam mê công nghệ, thiết kế và sáng tạo nội dung.
+            Mục tiêu của tôi là xây dựng các sản phẩm trực quan, hiệu quả và dễ tiếp cận
+            để truyền tải thông điệp rõ ràng đến mọi người.
+          </p>
+          <div class="tags" aria-label="Kỹ năng">
+            <span>UI/UX</span>
+            <span>Front-end</span>
+            <span>Graphic Design</span>
+            <span>Content Creation</span>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="Thông tin liên hệ">
+          <h3>Liên hệ</h3>
+          <ul>
+            <li><strong>Email:</strong> nguyenvana@email.com</li>
+            <li><strong>Điện thoại:</strong> 0901 234 567</li>
+            <li><strong>Địa chỉ:</strong> TP. Hồ Chí Minh</li>
+            <li><strong>Website:</strong> nguyenvana.dev</li>
+          </ul>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="pdf">
+        <h2>Sản phẩm 1: File PDF</h2>
+        <p>
+          Đây là hồ sơ hoặc tài liệu giới thiệu cá nhân được lưu dưới định dạng PDF và được
+          nhúng trực tiếp vào trang để người xem có thể xem ngay mà không cần tải xuống.
+        </p>
+        <div class="embed-box pdf-box">
+          <iframe
+            src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+            title="Hồ sơ cá nhân dạng PDF"
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>
+
+      <section class="section" id="infographic">
+        <h2>Sản phẩm 2: Ảnh Infographic PNG</h2>
+        <p>
+          Infographic dưới đây tóm tắt các mốc quan trọng trong hành trình học tập, kỹ năng
+          và định hướng nghề nghiệp của tôi.
+        </p>
+        <div class="image-box">
+          <img src="./Lab05_Ex2.1.png.png" alt="Infographic giới thiệu cá nhân bằng PNG" />
+        </div>
+      </section>
+
+      <section class="section" id="video">
+        <h2>Sản phẩm 3: Video YouTube</h2>
+        <p>
+          Video dưới đây là phần giới thiệu ngắn về bản thân, phong cách làm việc và đam mê
+          công nghệ của tôi.
+        </p>
+        <div class="video-box">
+          <iframe
+            src="https://www.youtube.com/embed/ScMzIvxBSi4"
+            title="Video giới thiệu cá nhân trên YouTube"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 - Trang giới thiệu cá nhân | Lab 05 - CT005
+    </footer>
+  </div>
+</body>
+</html>
